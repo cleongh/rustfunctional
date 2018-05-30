@@ -42,7 +42,7 @@ En C/C++ es posible manipular una variable más allá de su *lifetime*
 
 <!-- TODO (Carlos): que no se te olvide hablar de option -->
 
-## Estructuración de datos
+## Tipos de datos "funcionales"
 
 <!-- TODO (Carlos): `Result` y `Option` -->
 
@@ -52,7 +52,7 @@ En C/C++ es posible manipular una variable más allá de su *lifetime*
 
 ## Variables inmutables
 
-Si $x == 5$, no puede ser que $x == 6$
+Si $x = 5$, no puede ser que $x = 6$
 
 ## Enumerados estructuradoso
 
@@ -98,4 +98,4 @@ delete o; // ¿es seguro?
 # Gracias
 
 Carlos León
-<cleon@ucm.es>
+<<cleon@ucm.es>>
