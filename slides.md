@@ -34,11 +34,19 @@ Está diseñado para ser *seguro*, *concurrente* y *práctico*
 
 <!-- TODO (Carlos): pointers--luego habla de option -->
 
+## *Lifetime*
+
+En C/C++ es posible manipular una variable más allá de su *lifetime*
+
 # Rust y estructuras funcionales
 
 <!-- TODO (Carlos): que no se te olvide hablar de option -->
 
 ## Estructuración de datos
+
+<!-- TODO (Carlos): `Result` y `Option` -->
+
+<!-- TODO (Carlos): Tipos de datos recursivos -->
 
 ## Lambdas
 
@@ -46,9 +54,17 @@ Está diseñado para ser *seguro*, *concurrente* y *práctico*
 
 Si $x == 5$, no puede ser que $x == 6$
 
-## Enumerados estructurados
+## Enumerados estructuradoso
+
+## Traits
 
 ## "Pattern matching"
+
+## Iteradores
+
+Rust no usa evaluación perezosa
+
+<!-- TODO (Carlos): Iteradores aquí -->
 
 # ¿Por qué no hay prácticamente coste añadido con Rust?
 
@@ -57,6 +73,10 @@ Si $x == 5$, no puede ser que $x == 6$
 ## Eliminación de llamada recursiva
 
 ## Evaluación perezosa
+
+Rust no hace evaluación perezosa por defecto
+
+Usa *macros* <!-- TODO (Carlos): say something else here -->
 
 # ¿Se puede alcanzar un buen rendimiento con abstracciones en otros lenguajes?
 
