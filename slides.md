@@ -21,7 +21,6 @@ date: 6 de junio de 2018
 - Recursión
 - Evaluación perezosa
 - Sistemas de tipos estrictos
-- otra
 
 # ¿Por qué no usar programación funcional siempre?
 
@@ -44,7 +43,7 @@ Pero los beneficios del estilo funcional *son menores*
 
 ---
 
-![Programación funcional en lenguajes modernos](ingredientes.jpg)
+![Programación funcional en lenguajes modernos](foto_nata.jpg)
 
 ## Haskell
 
@@ -162,12 +161,12 @@ struct Jugador<’a> {
 
 ## Enumerados estructurados
 
-```haskell
-data  Maybe a  =  Nothing | Just a
+```rust
+enum Option<T> { None, Some(T) }
 ```
 
-```rust
-enum Option<T> { Some(T), None }
+```haskell
+data Maybe a = Nothing | Just a
 ```
 
 ---
@@ -178,8 +177,15 @@ Resolvemos los estructurados con `match`{.rust} (*¡exhaustivo!*)
 let j : Option<u32> = Some(5);
 match j {
     Some(x) => println!("Número {}", x),
-    None => println!("Ningún número...")
+    None    => println!("Ningún número...")
 } // imprime 5
+```
+
+```haskell
+let j = Just 5
+case j of
+    Just x  -> putStr "Número " >> print x
+    Nothing -> putStrLn "Ningún número"
 ```
 
 ## Tipos de datos recursivos
@@ -188,25 +194,49 @@ match j {
 enum List<T> { Nil, Cons(T, Box<List<T>>) }
 ```
 
+```haskell
+data List a = Nil | Cons a (List a)
+```
+
 ## Lambdas
 
 ```rust
 let y = 5;
-
 let closure = |x| x + y;
-
 println!("Captura: {}", closure(1)); // imprime 6
 ```  
+
+```haskell
+let y = 5
+let closure = \x -> x + x
+putStr "Captura :" >> print (closure 1)
+```
 
 
 ## Traits
 
 ```rust
 trait Portador {
-    fn pesoTotalInventario(&self) -> u32;
+    fn pesoTotalInventario(&self) -> i32;
 }
 ```
 
+```haskell
+class Portador a where
+    pesoTotalInventario :: a -> Integer
+```
+
+## Iteradores
+
+Con el *trait* `Iterator` conseguimos evaluación perezosa
+
+```rust
+v.iter().map(|x| x + 1);
+```
+
+```haskell
+map (+1) v
+```
 
 # Limitaciones *funcionales* de Rust
 
@@ -216,7 +246,7 @@ trait Portador {
 
 ```rust
 fn pura(x: u32) {
-  println!("ups...");
+  println!("ups..."); // el compilador no lo prohíbe
 }
 ```
 
@@ -225,7 +255,13 @@ fn pura(x: u32) {
 ```rust
 fn a() { b() }
 fn b() { a() }
-fn main() { a() }
+fn main() { a() } // la pila se desborda
+```
+
+```haskell
+a = b
+b = a
+main = a -- bucle infinito
 ```
 
 ## Evaluación perezosa
@@ -233,6 +269,8 @@ fn main() { a() }
 Rust no hace evaluación perezosa por defecto
 
 Usa [macros higiénicos](https://doc.rust-lang.org/book/first-edition/macros.html) e [iteradores](https://doc.rust-lang.org/book/second-edition/ch13-02-iterators.html)
+
+Los iteradores generan código **muy eficiente**
 
 
 # ¿Se puede alcanzar un buen rendimiento con abstracciones en otros lenguajes?
@@ -255,7 +293,7 @@ Pero el compilador no ofrece *seguridad*
 
 ```cpp
 MiObjeto * o = Factoria.CreaObjeto();
-delete o; // ¿es seguro?
+delete o; // no es seguro
 ```
 
 
