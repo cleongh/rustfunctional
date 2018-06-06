@@ -21,7 +21,7 @@ date: 6 de junio de 2018
 - Recursión
 - Evaluación perezosa
 - Sistemas de tipos estrictos
-
+- otra
 
 # ¿Por qué no usar programación funcional siempre?
 
