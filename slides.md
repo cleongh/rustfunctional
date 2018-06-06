@@ -238,6 +238,21 @@ v.iter().map(|x| x + 1);
 map (+1) v
 ```
 
+---
+
+```rust
+let v = (1..)
+        .filter(|x| x % 2 != 0)
+        .take(5)
+        .collect::<Vec<usize>>(); // Return as a new Vec<usize>
+```
+
+```haskell
+let v = take 5 $ 
+         filter (\x -> x `mod` 2 == 0)
+         [1 ..]
+```
+
 # Limitaciones *funcionales* de Rust
 
 ---
@@ -268,10 +283,22 @@ main = a -- bucle infinito
 
 Rust no hace evaluación perezosa por defecto
 
-Usa [macros higiénicos](https://doc.rust-lang.org/book/first-edition/macros.html) e [iteradores](https://doc.rust-lang.org/book/second-edition/ch13-02-iterators.html)
+Usa [macros higiénicas](https://doc.rust-lang.org/book/first-edition/macros.html) e [iteradores](https://doc.rust-lang.org/book/second-edition/ch13-02-iterators.html)
 
 Los iteradores generan código **muy eficiente**
 
+
+## Curryficación y aplicación parcial
+
+```haskell
+f :: Int -> Int -> Int
+f x y = x + y
+
+g :: Int -> Int
+g = f 3
+
+main = print $ g 1 -- 4
+```
 
 # ¿Se puede alcanzar un buen rendimiento con abstracciones en otros lenguajes?
 
